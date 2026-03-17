@@ -18,9 +18,13 @@
         <p>It should look like <code>Commonwealth Bank</code></p>
 
         <form method="POST">
-            <input type="text" id="input_text" name="input_text" placeholder="Enter your input string here..." />
+            <input type="text" id="input_text" name="input_text" placeholder="Enter your input string here..." value="{{ input_text }}" />
             <button type="submit">Submit</button>
         </form>
+
+        {% if codename %}
+        <p>Your codename: <strong>{{ codename }}</strong></p>
+        {% endif %}
     </div>
 </body>
 
