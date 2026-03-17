@@ -61,8 +61,8 @@ body {
   font-family: var(--font-mono);
   background: repeating-linear-gradient(
     to bottom,
-    rgba(142, 255, 179, 0.055) 0,
-    rgba(142, 255, 179, 0.055) 1px,
+    rgba(142, 255, 179, 0.11) 0,
+    rgba(142, 255, 179, 0.11) 1px,
     transparent 1px,
     transparent 4px
   );
@@ -90,14 +90,14 @@ body::before {
 }
 
 body::after {
-  opacity: 0.16;
+  opacity: 0.1;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.08) 50%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.12) 50%, transparent 50%),
     linear-gradient(
       90deg,
-      rgba(255, 0, 0, 0.04),
-      rgba(0, 255, 0, 0.03),
-      rgba(0, 70, 255, 0.04)
+      rgba(255, 0, 0, 0.05),
+      rgba(0, 255, 0, 0.035),
+      rgba(0, 70, 255, 0.05)
     );
   background-size:
     100% 4px,
@@ -450,6 +450,45 @@ form {
   margin-top: 22px;
   padding-top: 14px;
   border-top: 1px solid rgba(142, 255, 179, 0.15);
+}
+
+.status-ellipsis {
+  display: inline-block;
+  width: 3ch;
+}
+
+.status-ellipsis::before {
+  content: "";
+  display: inline-block;
+  animation: status-ellipsis 1.4s step-end infinite;
+}
+
+@keyframes status-ellipsis {
+  0%,
+  24% {
+    content: "";
+  }
+
+  25%,
+  49% {
+    content: ".";
+  }
+
+  50%,
+  74% {
+    content: "..";
+  }
+
+  75%,
+  100% {
+    content: "...";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-ellipsis::before {
+    animation: none;
+  }
 }
 
 /* Responsive */
