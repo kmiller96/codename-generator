@@ -3,12 +3,14 @@ from pathlib import Path
 from typing import Annotated
 
 from fastapi import FastAPI, Request, Form
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 BASE_DIR = Path(__file__).resolve().parent
 
 app = FastAPI()
 templates = Jinja2Templates(directory=str(BASE_DIR))
+app.mount("/static", StaticFiles(directory=str(BASE_DIR)), name="static")
 
 ################
 ## Load Words ##
