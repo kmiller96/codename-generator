@@ -15,8 +15,9 @@ client = TestClient(app)
 
 
 def _extract_codename(html: str) -> str | None:
-    """Extracts the generated codename from the HTML response."""
-    match = re.search(r"Your codename: <strong>([^<]+)</strong>", html)
+    """Extracts the generated codename from the #codename span in the HTML response."""
+    match = re.search(r'<span\s+id="codename">([^<]+)</span>', html)
+
     if match is None:
         return None
 
