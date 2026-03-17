@@ -35,7 +35,14 @@
             </div>
         </form>
 
-        {% if codename -%}
+        {% if error_title -%}
+        <section class="result result--error panel panel--alert stack-sm" aria-labelledby="error-title">
+            <p class="section-label">Alert Channel</p>
+            <p id="error-title" class="alert-title">{{ error_title }}</p>
+            <p class="text-body">Source identifier missing from the uplink package.</p>
+            <p class="alert-hint eyebrow">Hint: {{ error_hint }}</p>
+        </section>
+        {%- elif codename -%}
         <section class="result panel panel--accent stack-sm" aria-labelledby="codename">
             <p class="section-label">Assigned Codename</p>
             <span id="codename">{{ codename }}</span>

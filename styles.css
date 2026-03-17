@@ -18,6 +18,11 @@
   --text-placeholder: #5f826d;
   --accent: #8effb3;
   --accent-strong: #c8ffd8;
+  --alert: #ff8c69;
+  --alert-strong: #ffd4c8;
+  --alert-bg: rgba(255, 140, 105, 0.08);
+  --alert-border: rgba(255, 140, 105, 0.34);
+  --alert-shadow: 0 0 20px rgba(255, 140, 105, 0.12);
   --shadow: 0 0 24px rgba(81, 255, 140, 0.12);
   --shadow-soft: 0 0 18px rgba(142, 255, 179, 0.12);
   --shadow-strong: 0 0 18px rgba(142, 255, 179, 0.14);
@@ -201,6 +206,15 @@ form {
   background: var(--surface-accent);
 }
 
+.panel--alert {
+  border-color: var(--alert-border);
+  border-left: 3px solid var(--alert);
+  background: var(--alert-bg);
+  box-shadow:
+    var(--alert-shadow),
+    inset 0 0 0 1px var(--panel-highlight);
+}
+
 .stack-sm > * + * {
   margin-top: 10px;
 }
@@ -337,6 +351,21 @@ form {
   padding: 18px;
 }
 
+.result--error {
+  position: relative;
+  overflow: hidden;
+}
+
+.result--error::before {
+  content: "ALERT";
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  color: rgba(255, 140, 105, 0.72);
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+}
+
 #codename {
   display: inline-block;
   font-size: clamp(1.6rem, 5vw, 2.7rem);
@@ -345,6 +374,20 @@ form {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   text-shadow: 0 0 16px rgba(142, 255, 179, 0.22);
+}
+
+.alert-title {
+  color: var(--alert-strong);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 14px rgba(255, 140, 105, 0.18);
+}
+
+.alert-hint {
+  color: var(--alert-strong);
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 140, 105, 0.18);
 }
 
 .status-line {

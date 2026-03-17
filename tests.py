@@ -2,9 +2,10 @@ import random
 import re
 import string
 
+from fastapi.exceptions import RequestValidationError
 from fastapi.testclient import TestClient
 
-from app import app
+from app import _validation_error_hint, app
 
 
 client = TestClient(app)
@@ -88,7 +89,27 @@ def test_unique_random_inputs_return_unique_codenames():
 
 
 def test_bad_post_returns_error():
-    """Missing required form input returns a validation error."""
+    """Missing required form input returns a themed validation error page."""
     response = client.post("/", data={})
 
     assert response.status_code == 422
+    assert response.headers["content-type"].startswith("text/html")
+    assert "Transmission rejected" in response.text
+    assert "Hint: No identifier provided" in response.text
+    assert _extract_codename(response.text) is None
+
+
+def test_unrecognized_validation_error_returns_generic_hint():
+    """Unexpected validation failures fall back to a generic hint."""
+    exc = RequestValidationError(
+        errors=[
+            {
+                "type": "string_type",
+                "loc": ("body", "input_text"),
+                "msg": "Input should be a valid string",
+                "input": ["not", "a", "string"],
+            }
+        ]
+    )
+
+    assert _validation_error_hint(exc) == "Bad data"
