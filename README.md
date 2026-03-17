@@ -23,13 +23,13 @@ You can run this server using fastapi:
 uv run fastapi run app/main.py
 ```
 
-In practice, I deploy this in my homelab setup as a docker container in my docker
-compose stack. This service's dockerfile can be found in this repo. If you wish
-to run this service via docker:
+In practice, I would recommend you deploy this as a docker container. This
+service's dockerfile can be found in this repo. If you wish to run this service
+via docker:
 
 ```bash
-docker build -t torrent-portal .
-docker run --rm -it -p 8000:80 torrent-portal
+docker build -t codename-generator .
+docker run --rm -it -p 8000:80 codename-generator
 ```
 
 ## Development Quickstart
