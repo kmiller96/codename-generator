@@ -20,7 +20,7 @@ completely arbitrary.
 You can run this server using fastapi:
 
 ```bash
-uv run fastapi run
+uv run fastapi run app/main.py
 ```
 
 In practice, I deploy this in my homelab setup as a docker container in my docker
@@ -38,7 +38,7 @@ If you wish to poke around locally with this service, the easiest way is to do
 this via fastapi's development server:
 
 ```bash
-uv run fastapi dev
+uv run fastapi dev app/main.py
 ```
 
 ## TODO

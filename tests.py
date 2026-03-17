@@ -5,7 +5,7 @@ import string
 from fastapi.exceptions import RequestValidationError
 from fastapi.testclient import TestClient
 
-from app import _validation_error_hint, app
+from app.main import _validation_error_hint, app
 
 
 client = TestClient(app)
