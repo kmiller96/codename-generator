@@ -10,19 +10,20 @@
 
 <body>
     <div id="container">
+        <div class="help-row">
+            <span class="help-indicator" tabindex="0" aria-label="Help">
+                ?
+                <span class="help-tooltip">
+                    Enter an input string and the system will deterministically assign a repeatable operational codename.<br />
+                    Output format: <code>Commonwealth Bank</code><br />
+                    The same normalized input will always produce the same codename.
+                </span>
+            </span>
+        </div>
+
         <div id="header">
             <h1>Deterministic Codenames Generator</h1>
             <p>Field issue identity console</p>
-            <div class="help-row">
-                <span class="help-indicator" tabindex="0" aria-label="Help">
-                    ?
-                    <span class="help-tooltip">
-                        Enter an input string and the system will deterministically assign a repeatable operational codename.<br />
-                        Output format: <code>Commonwealth Bank</code><br />
-                        The same normalized input will always produce the same codename.
-                    </span>
-                </span>
-            </div>
         </div>
 
         <form method="POST">
