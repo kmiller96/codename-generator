@@ -44,3 +44,4 @@ uv run fastapi dev app/main.py
 ## TODO
 
 - [ ] Deploy this on to my public server as a public prototype.
+- [ ] Use an embedding model to find the closest word to an input?
