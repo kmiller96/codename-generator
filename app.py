@@ -5,10 +5,14 @@ from typing import Annotated
 from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
 
-app = FastAPI()
-
-templates = Jinja2Templates(directory=".")
 BASE_DIR = Path(__file__).resolve().parent
+
+app = FastAPI()
+templates = Jinja2Templates(directory=str(BASE_DIR))
+
+################
+## Load Words ##
+################
 
 
 def _load_words(filename: str) -> list[str]:
@@ -18,6 +22,10 @@ def _load_words(filename: str) -> list[str]:
 
 ADJECTIVES = _load_words("adjectives.txt")
 NOUNS = _load_words("nouns.txt")
+
+#############
+## Helpers ##
+#############
 
 
 def _generate_codename(input_text: str) -> str:
@@ -45,6 +53,11 @@ def _render_html_template(
             "codename": codename,
         },
     )
+
+
+##############
+## Handlers ##
+##############
 
 
 @app.get("/")
